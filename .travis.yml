@@ -2,6 +2,10 @@ language: nix
 before_script:
   - sudo echo 'sandbox = true' | sudo tee /etc/nix/nix.conf
 script:
+  - git status
+  - git log | head -n 1000
+  - env
+  - exit 1
   - nix-shell --run "mypy nixops"
   - nix-shell --run "black . --check --diff"
   - ./dev-shell --run "./coverage-tests.py -a '!libvirtd,!gce,!ec2,!azure' -v"
