@@ -22,12 +22,15 @@ class MachineDefinition(nixops.resources.ResourceDefinition):
 
         def _extract_key_options(x):
             opts = {}
-            for (key, xmlType) in (('text',        'string'),
-                                   ('keyFile',     'path'),
-                                   ('destDir',     'string'),
-                                   ('user',        'string'),
-                                   ('group',       'string'),
-                                   ('permissions', 'string')):
+            for (key, xmlType) in (
+                ("text", "string"),
+                ("keyFile", "path"),
+                ("keyCmd", "string"),
+                ("destDir", "string"),
+                ("user", "string"),
+                ("group", "string"),
+                ("permissions", "string"),
+            ):
                 elem = x.find("attrs/attr[@name='{0}']/{1}".format(key, xmlType))
                 if elem is not None:
                     opts[key] = elem.get("value")
