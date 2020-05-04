@@ -15,7 +15,12 @@
     flake = false;
   };
 
-  outputs = { self, nixpkgs, nixops-aws, nixops-hetzner }:
+  inputs.nixops-libvirtd = {
+    url = github:kisik21/nixops-libvirtd;
+    flake = false;
+  };
+
+  outputs = { self, nixpkgs, nixops-aws, nixops-hetzner, nixops-libvirtd }:
     let
 
       officialRelease = false;
@@ -53,6 +58,11 @@
               (import (nixops-hetzner + "/release.nix") {
                 inherit nixpkgs;
                 src = nixops-hetzner;
+              }).build.x86_64-linux
+              (import (nixops-libvirtd + "/release.nix") {
+                inherit nixpkgs;
+                nixopsLibvirtd = nixops-libvirtd;
+                system = "x86_64-linux";
               }).build.x86_64-linux
             ];
 

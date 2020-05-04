@@ -38,6 +38,24 @@
         "type": "github"
       }
     },
+    "nixops-libvirtd": {
+      "flake": false,
+      "info": {
+        "lastModified": 1588604751,
+        "narHash": "sha256-OIJzke14FopCWQJ3PU42u0/Fq6HE/qIk3kCk4W2v5xM="
+      },
+      "locked": {
+        "owner": "kisik21",
+        "repo": "nixops-libvirtd",
+        "rev": "ac15bf948414c02a3eef3b0a727e2f830d62e75c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kisik21",
+        "repo": "nixops-libvirtd",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "info": {
         "lastModified": 1586219474,
@@ -59,6 +77,7 @@
       "inputs": {
         "nixops-aws": "nixops-aws",
         "nixops-hetzner": "nixops-hetzner",
+        "nixops-libvirtd": "nixops-libvirtd",
         "nixpkgs": "nixpkgs"
       }
     }
