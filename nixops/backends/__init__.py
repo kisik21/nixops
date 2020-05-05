@@ -236,7 +236,7 @@ class MachineState(nixops.resources.ResourceState):
                     f.write(opts['text'])
             elif 'keyCmd' in opts:
                 with open(tmp, "w+") as f:
-                    subprocess.Popen(opts['keyCmd'], stdout=f, shell=True)
+                    subprocess.check_call(opts['keyCmd'], stdout=f, shell=True)
             elif 'keyFile' in opts:
                 self._logged_exec(["cp", opts['keyFile'], tmp])
             else:
